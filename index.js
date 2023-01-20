@@ -1,18 +1,19 @@
 //Task two
 
-function doMath(x, znak, y) {
+function doMath(x, y, znak) {
   x = parseFloat(prompt("Перше число", ""));
   y = parseFloat(prompt("Перше число", ""));
-  znak = prompt("Введіть дію", "+ - * /");
-  if (znak == "/") {
+  znak = prompt("Введіть дію", "+ - * / ^");
+
+  if (znak === "/") {
     return x / y;
-  } else if (znak == "*") {
+  } else if (znak === "*") {
     return x * y;
-  } else if (znak == "-") {
+  } else if (znak === "-") {
     return x - y;
-  } else if (znak == "+") {
+  } else if (znak === "+") {
     return x + y;
-  } else if (znak == "^") {
+  } else if (znak === "^") {
     return Math.pow(x, y);
   } else {
     return;
@@ -29,12 +30,12 @@ const arr = [23, "one", 3.14, "cucumber", "ssd", 11, 256];
 const transit = arr.filter(arrMedium);
 
 function arrMedium(number) {
-  return Number.isInteger(number);
+  return Number(number);
 }
 
-let result = transit.reduce((a, b) => a + b, 0) / transit.length;
+let resultTwo = transit.reduce((a, b) => a + b, 0) / transit.length;
 
-console.log(result);
+console.log(resultTwo);
 
 //Task three
 
@@ -63,12 +64,15 @@ console.log(resultArr);
 
 //Task four
 
-function stringCensored(k, p) {
-  k = prompt("Введіть строку");
-  p = prompt("що будемо прибирати?");
-  let aNew = k.replace(p, "");
-  return aNew;
+function charClear(str, symbol, newStr) {
+  str = prompt("Enter string?");
+  symbol = prompt("Symbols?", "ex.[x,y,..]");
+  let c = symbol.replace(/,/g, "");
+  let re = new RegExp(c, "g");
+  newStr = str.replaceAll(re, "");
+
+  return newStr;
 }
 
-const ress = stringCensored();
-console.log(ress);
+let resultFour = charClear();
+console.log(resultFour);
